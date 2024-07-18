@@ -1,12 +1,3 @@
-# azure_ai_vision_fe
-The frontend website to view Microsoft Azure VisionAI API, developed using React
-
-# Description
-
-This project is a sandbox for me to practice React, this project aims to build an interface to consume [Microsoft Azure AI Vision](https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/overview) APIs. 
-
-**Project still under development.**
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -77,4 +68,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
