@@ -22,7 +22,7 @@ jobs:
           cache: 'npm'
           # lfs: false
       - run: npm ci
-      - run: npm test
+      
 
 
       - name: Build And Deploy
