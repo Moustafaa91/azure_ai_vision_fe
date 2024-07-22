@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Licensing
+- Copyright 2023 [Creative Tim](https://www.creative-tim.com?ref=readme-mdr)
+- Creative Tim [license](https://www.creative-tim.com/license?ref=readme-mdr)
+
 ## Available Scripts
 
 In the project directory, you can run:
