@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ObjectsResultComponent = ({ objectsResult }) => (
-  <div>
+const ObjectsResultComponent = ({ analysisResult }) => {
+  const objects = analysisResult?.objectsResult;
+
+  return ( <div>
     <h2>Objects Result</h2>
-    {objectsResult.values.map((object, index) => (
+    {objects.values.map((object, index) => (
       <div key={index}>
         <div>
           <p>Bounding Box: x: {object.boundingBox.x}, y: {object.boundingBox.y}, w: {object.boundingBox.w}, h: {object.boundingBox.h}</p>
@@ -17,6 +19,7 @@ const ObjectsResultComponent = ({ objectsResult }) => (
       </div>
     ))}
   </div>
-);
+  );
+};
 
 export default ObjectsResultComponent;

@@ -1,5 +1,5 @@
-const result = {
-    "modelVersion": "2023-10-01",
+const exampleResult = {
+    "analysisResult": "2023-10-01",
     "captionResult": {
         "text": "a man pointing at a screen",
         "confidence": 0.7767596244812012
@@ -1600,4 +1600,4 @@ const result = {
     }
 };
 
-module.exports = result;
+module.exports = exampleResult;
