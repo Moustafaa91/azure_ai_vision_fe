@@ -38,8 +38,8 @@ Coded by www.creative-tim.com
 // Material Dashboard 2 React layouts
 import CaptionResultComponent from './components/AzureAIVisionComponents/CaptionResultComponent';
 import DenseCaptionsResultComponent from './components/AzureAIVisionComponents/DenseCaptionsResultComponent';
-import ObjectsResultComponent from './components/AzureAIVisionComponents/ObjectsResultComponent';
-import ImageAnalysisUrl from './components/ImageAnalysisControls/ImageAnalysisUrl';
+import TagsResultComponent from './components/AzureAIVisionComponents/TagsResultComponent';
+import ImageAnalysisUrl from './components/ImageAnalysisComponents/ImageAnalysisUrl';
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -71,11 +71,11 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Objects",
-    key: "Objects",
+    name: "Image tagging",
+    key: "tagging",
     icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/ObjectsResult",
-    component: ObjectsResultComponent, // Changed to component reference
+    component: TagsResultComponent, // Changed to component reference
   },
   {
     type: "divider",

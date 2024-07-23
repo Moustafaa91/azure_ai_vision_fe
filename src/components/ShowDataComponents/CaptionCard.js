@@ -1,19 +1,19 @@
 
 import React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
-const SimpleCard = ({ title, text, confidence, url }) => {
+const CaptionCard = ({ title, text, confidence, url }) => {
 return (
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {title}
         </Typography>
+        <Divider />
         <Typography variant="h6" component="div">
           {text}
         </Typography>
@@ -36,4 +36,4 @@ return (
 
 };
 
-export default SimpleCard;
+export default CaptionCard;

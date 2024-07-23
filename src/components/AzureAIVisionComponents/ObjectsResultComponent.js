@@ -1,32 +1,30 @@
+
 import React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import ObjectsDetectionCard from 'components/ShowDataComponents/ObjectsDetectionCard';
+
+
+// TODO LATER
 
 const ObjectsResultComponent = ({ analysisResult }) => {
-  const objects = analysisResult?.objectsResult;
+  const objectsResult = analysisResult?.objectsResult;
+  console.log(objectsResult);
+  return (
+    <Box sx={{ minWidth: 275, boxShadow: 3 }}>
+      {(
+        objectsResult ? (
+          <Card style={{backgroundColor: "transparent"}} variant="outlined">
+            <ObjectsDetectionCard title="Objects detection Result" listData={objectsResult.values} url="https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-object-detection-40" />
+          </Card>
+        ) : (
+          <Card style={{backgroundColor: "transparent"}} variant="outlined">
+            <ObjectsDetectionCard title="Objects detection Result" text="No objects detection result available." />
+          </Card>
+        )
+      )}
 
-  return ( 
-  <div>
-    <h2>Objects Result</h2>
-    {objects ? (
-      <>
-      {objects.values.map((object, index) => (
-        <div key={index}>
-          <div>
-            <p>Bounding Box: x: {object.boundingBox.x}, y: {object.boundingBox.y}, w: {object.boundingBox.w}, h: {object.boundingBox.h}</p>
-          </div>
-          {object.tags.map((tag, tagIndex) => (
-            <div key={tagIndex}>
-              <p>{tag.name}</p>
-              <p>Confidence score: {(tag.confidence * 100).toFixed(2)}%</p>
-            </div>
-          ))}
-        </div>
-      ))}
-      </>
-    ) : (
-      <p>No objects result available.</p>
-    )}
-    
-  </div>
+    </Box>
   );
 };
 

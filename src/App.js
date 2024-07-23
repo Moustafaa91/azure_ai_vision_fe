@@ -23,7 +23,7 @@ import theme from "assets/theme";
 import MDBox from "components/MDBox";
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
-import ImageAnalysisUrl from './components/ImageAnalysisControls/ImageAnalysisUrl';
+import ImageAnalysisUrl from './components/ImageAnalysisComponents/ImageAnalysisUrl';
 // Images
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
@@ -34,7 +34,7 @@ import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 // Material Dashboard 2 React routes
 import routes from "routes";
-import ImageDisplay from './components/ImageAnalysisControls/ImageDisplay';
+import ImageDisplay from './components/ShowDataComponents/ImageDisplay';
 
 import exampleResult from './Mock/result';
 
@@ -148,7 +148,7 @@ function App() {
           justifyContent="center"
           alignItems="center"
           width="60rem"
-          height="60rem"
+          height="100%"
           bgColor="tranparent"
           shadow="sm"
           borderRadius="10%"
@@ -168,7 +168,7 @@ function App() {
             borderRadius="10%"
             position="absolute"
             zIndex={-1}
-            top="35rem"
+            top="55%"
             color="dark" >
             <Routes>{getRoutes(routes)}</Routes>
           </MDBox>
