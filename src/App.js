@@ -14,27 +14,16 @@ Coded by www.creative-tim.com
 import React, { useState, useEffect, useMemo } from 'react';
 // react-router components
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import CaptionResultComponent from './components/AzureAIVisionComponents/CaptionResultComponent';
-import DenseCaptionsResultComponent from './components/AzureAIVisionComponents/DenseCaptionsResultComponent';
-import ObjectsResultComponent from './components/AzureAIVisionComponents/ObjectsResultComponent';
-import PeopleResultComponent from './components/AzureAIVisionComponents/PeopleResultComponent';
-import ReadResultComponent from './components/AzureAIVisionComponents/ReadResultComponent';
-import SmartCropsResultComponent from './components/AzureAIVisionComponents/SmartCropsResultComponent';
-import TagsResultComponent from './components/AzureAIVisionComponents/TagsResultComponent';
-import ImageAnalysisUrl from './components/ImageAnalysisControls/ImageAnalysisUrl';
 // @mui material components
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import Icon from "@mui/material/Icon";
-import MDButton from "components/MDButton";
 // Material Dashboard 2 React themes
 import theme from "assets/theme";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
-// Material Dashboard 2 React Examples
-import SimpleBlogCard from "examples/Cards/BlogCards/SimpleBlogCard";
+import ImageAnalysisUrl from './components/ImageAnalysisControls/ImageAnalysisUrl';
 // Images
 import brandWhite from "assets/images/logo-ct.png";
 import brandDark from "assets/images/logo-ct-dark.png";
@@ -89,10 +78,10 @@ function App() {
   // Change the openConfigurator state
   const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
 
-
+  /*
   useEffect(() => {
     setAnalysisResult(exampleResult);
-  }, []);
+  }, []);*/
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -101,6 +90,17 @@ function App() {
       }
       if (route.route) {
         const Component = route.component;
+        if (route.key === "ImageAnalysis") {
+          return (
+            <Route
+            exact
+            path={route.route}
+            element={<ImageAnalysisUrl analysisResult={analysisResult} setAnalysisResult={handleAnalysisResult} />}
+            key={route.key}
+          />
+          );
+        }
+        else {
         return (
           <Route
             exact
@@ -109,6 +109,7 @@ function App() {
             key={route.key}
           />
         );
+      }
       }
       return null;
     });
@@ -133,7 +134,7 @@ function App() {
 
         <Sidenav
           color={sidenavColor}
-          brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+          brand= {brandWhite}
           brandName="AZURE AI VISION"
           routes={routes}
           onMouseEnter={handleOnMouseEnter}
@@ -146,16 +147,15 @@ function App() {
           alignItems="center"
           width="60rem"
           height="60rem"
-          bgColor="dark"
+          bgColor="tranparent"
           shadow="sm"
           borderRadius="10%"
           position="absolute"
-          
           left="30rem"
           top="1rem"
           zIndex={99}
-          color="white"
-          sx={{ cursor: "pointer" }}
+          color="dark"
+          
         >
            <Routes>{getRoutes(routes)}</Routes>
         </MDBox>

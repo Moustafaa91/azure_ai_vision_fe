@@ -39,7 +39,7 @@ Coded by www.creative-tim.com
 import CaptionResultComponent from './components/AzureAIVisionComponents/CaptionResultComponent';
 import DenseCaptionsResultComponent from './components/AzureAIVisionComponents/DenseCaptionsResultComponent';
 import ObjectsResultComponent from './components/AzureAIVisionComponents/ObjectsResultComponent';
-import Notifications from "layouts/notifications";
+import ImageAnalysisUrl from './components/ImageAnalysisControls/ImageAnalysisUrl';
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -47,9 +47,17 @@ import Icon from "@mui/material/Icon";
 const routes = [
   {
     type: "collapse",
+    name: "Get started",
+    key: "ImageAnalysis",
+    icon: <Icon fontSize="small">start</Icon>,
+    route: "/",
+    component: ImageAnalysisUrl, // Changed to component reference
+  },
+  {
+    type: "collapse",
     name: "Caption",
     key: "Caption",
-    icon: <Icon fontSize="small">dashboard</Icon>,
+    icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/CaptionResult",
     component: CaptionResultComponent, // Changed to component reference
   },
@@ -57,7 +65,7 @@ const routes = [
     type: "collapse",
     name: "Dense Captions",
     key: "DenseCaptions",
-    icon: <Icon fontSize="small">dashboard</Icon>,
+    icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/DenseCaptionsResult",
     component: DenseCaptionsResultComponent, // Changed to component reference
   },
@@ -65,9 +73,12 @@ const routes = [
     type: "collapse",
     name: "Objects",
     key: "Objects",
-    icon: <Icon fontSize="small">dashboard</Icon>,
+    icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/ObjectsResult",
     component: ObjectsResultComponent, // Changed to component reference
+  },
+  {
+    type: "divider",
   }
 ];
 
