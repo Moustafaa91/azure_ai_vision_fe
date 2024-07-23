@@ -34,6 +34,7 @@ import Sidenav from "examples/Sidenav";
 import Configurator from "examples/Configurator";
 // Material Dashboard 2 React routes
 import routes from "routes";
+import ImageDisplay from './components/ImageAnalysisControls/ImageDisplay';
 
 import exampleResult from './Mock/result';
 
@@ -47,6 +48,7 @@ function App() {
   const [showDenseCaptionsResult, setShowDenseCaptionsResult] = useState(false);
   const [showObjectsResult, setShowObjectsResult] = useState(false);
   const [analysisResult, setAnalysisResult] = useState(null);
+  const [displayImageUrl, setDisplayImageUrl] = useState('');
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -93,29 +95,29 @@ function App() {
         if (route.key === "ImageAnalysis") {
           return (
             <Route
-            exact
-            path={route.route}
-            element={<ImageAnalysisUrl analysisResult={analysisResult} setAnalysisResult={handleAnalysisResult} />}
-            key={route.key}
-          />
+              exact
+              path={route.route}
+              element={<ImageAnalysisUrl setAnalysisResult={handleAnalysisResult} setDisplayImageUrl={setDisplayImageUrl} />}
+              key={route.key}
+            />
           );
         }
         else {
-        return (
-          <Route
-            exact
-            path={route.route}
-            element={<Component analysisResult={analysisResult} />}
-            key={route.key}
-          />
-        );
-      }
+          return (
+            <Route
+              exact
+              path={route.route}
+              element={<Component analysisResult={analysisResult} />}
+              key={route.key}
+            />
+          );
+        }
       }
       return null;
     });
 
 
-    const handleAnalysisResult = (result) => {
+  const handleAnalysisResult = (result) => {
     setAnalysisResult(result);
   };
 
@@ -134,7 +136,7 @@ function App() {
 
         <Sidenav
           color={sidenavColor}
-          brand= {brandWhite}
+          brand={brandWhite}
           brandName="AZURE AI VISION"
           routes={routes}
           onMouseEnter={handleOnMouseEnter}
@@ -155,12 +157,26 @@ function App() {
           top="1rem"
           zIndex={99}
           color="dark"
-          
+
         >
-           <Routes>{getRoutes(routes)}</Routes>
+          <ImageDisplay imageUrl={displayImageUrl} />
+          <MDBox display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            bgColor="transparent"
+            borderRadius="10%"
+            position="absolute"
+            zIndex={-1}
+            top="35rem"
+            color="dark" >
+            <Routes>{getRoutes(routes)}</Routes>
+          </MDBox>
         </MDBox>
 
       </ThemeProvider>
+
+
     </>
   );
 };

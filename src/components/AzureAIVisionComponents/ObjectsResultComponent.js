@@ -16,7 +16,7 @@ const ObjectsResultComponent = ({ analysisResult }) => {
           {object.tags.map((tag, tagIndex) => (
             <div key={tagIndex}>
               <p>{tag.name}</p>
-              <p>Confidence: {(tag.confidence * 100).toFixed(2)}%</p>
+              <p>Confidence score: {(tag.confidence * 100).toFixed(2)}%</p>
             </div>
           ))}
         </div>
