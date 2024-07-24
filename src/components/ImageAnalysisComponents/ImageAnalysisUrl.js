@@ -3,10 +3,13 @@ import MDInput from "../MDInput";
 import MDButton from "../MDButton";
 import MDTypography from "../MDTypography";
 import MDBox from "../MDBox";
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import useAnalyzeImage from '../../hooks/useAnalyzeImage';
 
 function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
   const [imageUrl, setImageUrl] = useState('');
+  const [genderNeutral, setGenderNeutral] = useState(false);
   const [message, setMessage] = useState({ content: '', isError: false });
 
   const { analyze, loading, error } = useAnalyzeImage();
@@ -26,7 +29,7 @@ function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
     setMessage({ content: '', isError: false });
 
     try {
-      const result = await analyze(imageUrl);
+      const result = await analyze(imageUrl, genderNeutral);
       setMessage({ content: 'Image analyzed successfully!', isError: false });
       setAnalysisResult(result);
       setDisplayImageUrl(imageUrl);
@@ -56,6 +59,7 @@ function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
           color="dark"
           style={{ width: "100%" }}
         />
+
       </MDBox>
 
       {message.content && (
@@ -66,6 +70,13 @@ function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
         </MDBox>
       )}
 
+      <MDBox bgColor="Snow" width="100%">
+      <FormControlLabel 
+        value={genderNeutral}
+        control={<Checkbox checked={genderNeutral} onChange={(e) => setGenderNeutral(e.target.checked)} />}
+        label="Gender neutral caption"
+      />
+      </MDBox>
       <MDTypography color="dark" variant="overline">
         Image URL must end with {validExtensions}
       </MDTypography>

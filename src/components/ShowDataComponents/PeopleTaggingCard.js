@@ -33,7 +33,7 @@ const PeopleTaggingCard = ({ title, text, url, listData, setCurrentBoundingBox }
                 </Typography>
                 <Divider />
 
-                {listData.length > 0 ?
+                {listData && listData.length > 0 ?
                     (<nav style={{ maxHeight: '250px', overflow: 'auto' }} >
                         <List>
                             {listData.map((item, index) => (
