@@ -71,7 +71,7 @@ const PeopleTaggingCard = ({ title, text, url, listData, setCurrentBoundingBox }
                     <Button onClick={() => window.open(url, '_blank')} size="small">Learn More about this API</Button>
                     <Button onClick={clearBoundingBox} size="small">Clear bounding box</Button> 
                     </>) :
-                    (<Button disabled="disabled" size="small">Learn More about this API</Button>
+                    (<Button disabled={true} size="small">Learn More about this API</Button>
 
                     )}
             </CardActions>

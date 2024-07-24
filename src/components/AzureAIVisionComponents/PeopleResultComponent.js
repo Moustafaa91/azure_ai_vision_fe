@@ -5,9 +5,9 @@ import PeopleTaggingCard from 'components/ShowDataComponents/PeopleTaggingCard';
 
 const PeopleResultComponent = ({ analysisResult, setCurrentBoundingBox}) => {
   const peopleResult = analysisResult?.peopleResult;
-  console.log(peopleResult);
+  
   return (
-    <Box sx={{ minWidth: 275, boxShadow: 3 }}>
+    <Box sx={{ minWidth: 500, boxShadow: 3 }}>
       {(
         peopleResult ? (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">

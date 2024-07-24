@@ -63,7 +63,7 @@ const ImageTaggingCard = ({title, text, url, listData}) => {
       <CardActions>
         {url ? 
         (<Button onClick={() => window.open(url, '_blank')} size="small">Learn More about this API</Button>) : 
-        (<Button disabled="disabled" size="small">Learn More about this API</Button>
+        (<Button disabled={true} size="small">Learn More about this API</Button>
             
         )}
       </CardActions>

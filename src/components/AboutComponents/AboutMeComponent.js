@@ -13,7 +13,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 const AboutMeComponent = ({ imageUrl, name, description, linkedinUrl, githubUrl }) => {
   return (
-    <Card sx={{ maxWidth: 345, margin: 'auto' }}>
+    <Card sx={{  boxShadow: 20, maxWidth: 345, margin: 'auto' }}>
       <CardMedia
         component="img"
         height="300"

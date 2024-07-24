@@ -7,7 +7,7 @@ const TagsResultComponent = ({ analysisResult }) => {
   const tagsResult = analysisResult?.tagsResult;
   
   return (
-    <Box sx={{ minWidth: 275, boxShadow: 3 }}>
+    <Box sx={{ minWidth: 500, boxShadow: 3 }}>
       {(
         tagsResult ? (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">

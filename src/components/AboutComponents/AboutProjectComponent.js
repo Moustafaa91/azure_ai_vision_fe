@@ -25,7 +25,7 @@ const AboutProjectComponent = () => {
     return (
 
 
-        <Card sx={{ maxWidth: '80%', maxHeight: '30%', overflow: 'auto', top: '20px', margin: 'auto' }}>
+        <Card sx={{ boxShadow: 20, maxWidth: '80%', maxHeight: '30%', overflow: 'auto', top: '20px', margin: 'auto' }}>
 
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

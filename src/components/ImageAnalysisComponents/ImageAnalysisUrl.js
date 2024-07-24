@@ -39,7 +39,7 @@ function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
   };
 
   return (
-    <MDBox width="100%">
+    <MDBox sx={{   maxWidth: 700, margin: 'auto' }} width="100%">
       <MDBox display="flex" alignItems="center" width="100%" marginBottom="1rem">
         <MDButton style={{ marginRight: "1rem" }} size="small" color="dark" onClick={handleAnalyzeImage} disabled={loading}>
           {loading ? 'Analyzing...' : 'Analyze Image'}
@@ -71,14 +71,22 @@ function ImageAnalysisUrl({ setAnalysisResult, setDisplayImageUrl }) {
       )}
 
       <MDBox bgColor="Snow" width="100%">
-      <FormControlLabel 
-        value={genderNeutral}
-        control={<Checkbox checked={genderNeutral} onChange={(e) => setGenderNeutral(e.target.checked)} />}
-        label="Gender neutral caption"
-      />
+        <FormControlLabel
+          value={genderNeutral}
+          control={<Checkbox checked={genderNeutral} onChange={(e) => setGenderNeutral(e.target.checked)} />}
+          label="Gender neutral caption"
+        />
       </MDBox>
       <MDTypography color="dark" variant="overline">
         Image URL must end with {validExtensions}
+      </MDTypography>
+      <br />
+      <MDTypography color="dark" variant="overline">
+        The file size of the image must be less than 20 megabytes (MB)
+      </MDTypography>
+      <br />
+      <MDTypography color="dark" variant="overline">
+        The dimensions of the image must be greater than 50 x 50 pixels and less than 16,000 x 16,000 pixels
       </MDTypography>
     </MDBox>
   );

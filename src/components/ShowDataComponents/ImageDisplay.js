@@ -25,7 +25,7 @@ const ImageDisplay = ({ imageUrl, boundingBox }) => {
       width="30rem"
       height="30rem"
       bgColor="transparent"
-      shadow="sm"
+      shadow="lg"
       position="absolute"
       zIndex={-1}
       top="1rem"
@@ -35,9 +35,10 @@ const ImageDisplay = ({ imageUrl, boundingBox }) => {
   );
 
   const calculateBoxStyle = () => {
-    if (!boundingBox) return {};
+    if (!boundingBox || !imageRef.current || !imageRef.current.naturalWidth || !imageRef.current.naturalHeight) return {};
     const scaleX = imageDimensions.width / imageRef.current.naturalWidth;
     const scaleY = imageDimensions.height / imageRef.current.naturalHeight;
+    if (!scaleX || !scaleY) return {};
     return {
       position: 'absolute',
       border: '2px solid red',
@@ -56,7 +57,7 @@ const ImageDisplay = ({ imageUrl, boundingBox }) => {
       width="30rem"
       height="30rem"
       bgColor="transparent"
-      shadow="sm"
+      shadow="lg"
       position="absolute"
       zIndex={-1}
       top="1rem"

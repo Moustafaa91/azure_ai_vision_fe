@@ -9,7 +9,7 @@ import ObjectsDetectionCard from 'components/ShowDataComponents/ObjectsDetection
 
 const ObjectsResultComponent = ({ analysisResult }) => {
   const objectsResult = analysisResult?.objectsResult;
-  console.log(objectsResult);
+  
   return (
     <Box sx={{ minWidth: 275, boxShadow: 3 }}>
       {(
