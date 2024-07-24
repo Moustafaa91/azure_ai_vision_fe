@@ -31,7 +31,6 @@ import brandDark from "assets/images/logo-ct-dark.png";
 import themeDark from "assets/theme-dark";
 // Material Dashboard 2 React example components
 import Sidenav from "examples/Sidenav";
-import Configurator from "examples/Configurator";
 // Material Dashboard 2 React routes
 import routes from "routes";
 import ImageDisplay from './components/ShowDataComponents/ImageDisplay';
@@ -43,12 +42,9 @@ import exampleResult from './Mock/result';
 
 function App() {
 
-  const [showprofile, setShowProfile] = useState(false);
-  const [showCaptionResult, setShowCaptionResult] = useState(false);
-  const [showDenseCaptionsResult, setShowDenseCaptionsResult] = useState(false);
-  const [showObjectsResult, setShowObjectsResult] = useState(false);
   const [analysisResult, setAnalysisResult] = useState(null);
   const [displayImageUrl, setDisplayImageUrl] = useState('');
+  const [currentBoundingBox, setCurrentBoundingBox] = useState(null);
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -77,9 +73,6 @@ function App() {
     }
   };
 
-  // Change the openConfigurator state
-  const handleConfiguratorOpen = () => setOpenConfigurator(dispatch, !openConfigurator);
-
   /*
   useEffect(() => {
     setAnalysisResult(exampleResult);
@@ -107,7 +100,7 @@ function App() {
             <Route
               exact
               path={route.route}
-              element={<Component analysisResult={analysisResult} />}
+              element={<Component analysisResult={analysisResult} setCurrentBoundingBox={setCurrentBoundingBox} />}
               key={route.key}
             />
           );
@@ -120,11 +113,6 @@ function App() {
   const handleAnalysisResult = (result) => {
     setAnalysisResult(result);
   };
-
-  const toggleShowCaptionResult = () => setShowCaptionResult(!showCaptionResult);
-  const toggleShowDenseCaptionsResult = () => setShowDenseCaptionsResult(!showDenseCaptionsResult);
-  const toggleShowObjectsResult = () => setShowObjectsResult(!showObjectsResult);
-  const { pathname } = useLocation();
 
 
 
@@ -151,21 +139,20 @@ function App() {
           height="100%"
           bgColor="tranparent"
           shadow="sm"
-          borderRadius="10%"
+          
           position="absolute"
           left="30rem"
-          top="1rem"
           zIndex={99}
           color="dark"
 
         >
-          <ImageDisplay imageUrl={displayImageUrl} />
+          <ImageDisplay imageUrl={displayImageUrl} boundingBox={currentBoundingBox} />
           <MDBox display="flex"
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
             bgColor="transparent"
-            borderRadius="10%"
+            
             position="absolute"
             zIndex={-1}
             top="55%"

@@ -11,7 +11,11 @@ const TagsResultComponent = ({ analysisResult }) => {
       {(
         tagsResult ? (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">
-            <ImageTaggingCard title="Image tagging Result" listData={tagsResult.values} url="https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-tag-images-40" />
+            <ImageTaggingCard 
+            title="Image tagging Result" 
+            listData={tagsResult.values} 
+            url="https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-tag-images-40" 
+            />
           </Card>
         ) : (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">

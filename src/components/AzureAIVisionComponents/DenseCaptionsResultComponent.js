@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import DenseCaptionCard from 'components/ShowDataComponents/DenseCaptionCard';
 
-const DenseCaptionsResultComponent = ({ analysisResult }) => {
+const DenseCaptionsResultComponent = ({ analysisResult, setCurrentBoundingBox  }) => {
   const denseCaptions = analysisResult?.denseCaptionsResult;
 
   return (
@@ -12,7 +12,12 @@ const DenseCaptionsResultComponent = ({ analysisResult }) => {
       {(
         denseCaptions ? (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">
-            <DenseCaptionCard title="Dense Captions Result" listData={denseCaptions.values} url="https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-describe-images-40?tabs=dense" />
+            <DenseCaptionCard 
+            title="Dense Captions Result" 
+            listData={denseCaptions.values}
+            url="https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-describe-images-40?tabs=dense" 
+            setCurrentBoundingBox={setCurrentBoundingBox}
+            />
           </Card>
         ) : (
           <Card style={{backgroundColor: "transparent"}} variant="outlined">

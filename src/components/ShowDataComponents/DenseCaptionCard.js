@@ -9,31 +9,42 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const DenseCaptionCard = ({title, text, url, listData}) => {
-    
-    const uniqueListData = listData
-    ? listData.filter((item, index, self) => 
-        index === self.findIndex((t) => (
-          t.text === item.text
-        ))
-      )
+const DenseCaptionCard = ({ title, text, url, listData, setCurrentBoundingBox }) => {
+
+  const uniqueListData = listData
+    ? listData.filter((item, index, self) =>
+      index === self.findIndex((t) => (
+        t.text === item.text
+      ))
+    )
     : [];
 
-    return (
-    
+  const handleItemClick = (boundingBox) => {
+    setCurrentBoundingBox(boundingBox);
+  };
+
+  const clearBoundingBox = () => {
+    setCurrentBoundingBox(null);
+  };
+
+  return (
+
     <React.Fragment>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {title}
         </Typography>
+        <Typography sx={{ fontSize: 12 }} color="text.secondary" gutterBottom>
+          Click on each caption to highlight it's bounding box.
+        </Typography>
         <Divider />
 
-        {uniqueListData.length > 0 ? 
-        (<nav style={{ maxHeight: '250px', overflow: 'auto' }} >
-        <List>
-            {uniqueListData.map((item, index) => (
+        {uniqueListData.length > 0 ?
+          (<nav style={{ maxHeight: '250px', overflow: 'auto' }} >
+            <List>
+              {uniqueListData.map((item, index) => (
                 <ListItem disablePadding key={index}>
-                <ListItemButton>
+                  <ListItemButton onClick={() => handleItemClick(item.boundingBox)}>
                     <ListItemText
                       primary={
                         <React.Fragment>
@@ -45,31 +56,34 @@ const DenseCaptionCard = ({title, text, url, listData}) => {
                       }
                     />
                   </ListItemButton>
-              </ListItem>
-            ))}
-        </List>
-      </nav>
-        ) : (
+                </ListItem>
+              ))}
+            </List>
+          </nav>
+          ) : (
             <List>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary= {text} />
-            </ListItemButton>
-          </ListItem>
-        </List>
-        )}
-       
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          )}
+
       </CardContent>
       <CardActions>
-        {url ? 
-        (<Button onClick={() => window.open(url, '_blank')} size="small">Learn More about this API</Button>) : 
-        (<Button disabled="disabled" size="small">Learn More about this API</Button>
-            
-        )}
+        {url ?
+          (<>
+            <Button onClick={() => window.open(url, '_blank')} size="small">Learn More about this API</Button>
+            <Button onClick={clearBoundingBox} size="small">Clear bounding box</Button>
+            </>) :
+          (<Button disabled="disabled" size="small">Learn More about this API</Button>
+
+          )}
       </CardActions>
     </React.Fragment>
-    
-    
+
+
   );
 }
 
