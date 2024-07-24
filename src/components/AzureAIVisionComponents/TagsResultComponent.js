@@ -5,7 +5,7 @@ import ImageTaggingCard from 'components/ShowDataComponents/ImageTaggingCard';
 
 const TagsResultComponent = ({ analysisResult }) => {
   const tagsResult = analysisResult?.tagsResult;
-  console.log(tagsResult);
+  
   return (
     <Box sx={{ minWidth: 275, boxShadow: 3 }}>
       {(

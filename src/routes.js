@@ -40,6 +40,7 @@ import CaptionResultComponent from './components/AzureAIVisionComponents/Caption
 import DenseCaptionsResultComponent from './components/AzureAIVisionComponents/DenseCaptionsResultComponent';
 import TagsResultComponent from './components/AzureAIVisionComponents/TagsResultComponent';
 import ImageAnalysisUrl from './components/ImageAnalysisComponents/ImageAnalysisUrl';
+import PeopleResultComponent from './components/AzureAIVisionComponents/PeopleResultComponent';
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -51,23 +52,23 @@ const routes = [
     key: "ImageAnalysis",
     icon: <Icon fontSize="small">start</Icon>,
     route: "/",
-    component: ImageAnalysisUrl, // Changed to component reference
+    component: ImageAnalysisUrl, 
   },
   {
     type: "collapse",
-    name: "Caption",
+    name: "Image Caption",
     key: "Caption",
     icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/CaptionResult",
-    component: CaptionResultComponent, // Changed to component reference
+    component: CaptionResultComponent, 
   },
   {
     type: "collapse",
-    name: "Dense Captions",
+    name: "Image Dense Captions",
     key: "DenseCaptions",
     icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/DenseCaptionsResult",
-    component: DenseCaptionsResultComponent, // Changed to component reference
+    component: DenseCaptionsResultComponent, 
   },
   {
     type: "collapse",
@@ -75,11 +76,35 @@ const routes = [
     key: "tagging",
     icon: <Icon fontSize="small">Dashboard</Icon>,
     route: "/ObjectsResult",
-    component: TagsResultComponent, // Changed to component reference
+    component: TagsResultComponent, 
+  },
+  {
+    type: "collapse",
+    name: "People in the image",
+    key: "people",
+    icon: <Icon fontSize="small">Dashboard</Icon>,
+    route: "/peopleResult",
+    component: PeopleResultComponent, 
   },
   {
     type: "divider",
     key: "divider-1",
+  },
+  {
+    type: "collapse",
+    name: "About the project",
+    key: "aboutproject",
+    icon: <Icon fontSize="small">Dashboard</Icon>,
+    route: "/",
+    component: ImageAnalysisUrl, 
+  },
+  {
+    type: "collapse",
+    name: "About me",
+    key: "aboutme",
+    icon: <Icon fontSize="small">Dashboard</Icon>,
+    route: "/",
+    component: ImageAnalysisUrl, 
   }
 ];
 
