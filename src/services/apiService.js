@@ -1,12 +1,13 @@
 
-const API_URL = 'https://azureaivision-api.azurewebsites.net/api/analyzeImage';
+const API_URL = process.env.REACT_APP_AZURE_API_URL;
 
 export const analyzeImage = async (imageUrl, genderNeutral) => {
   const requestBody = {
     url: imageUrl,
     genderNeutral: false
   };
-  console.log(requestBody);
+  debugger;
+  console.log(API_URL);
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {

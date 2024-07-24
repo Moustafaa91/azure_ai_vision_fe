@@ -41,7 +41,8 @@ import DenseCaptionsResultComponent from './components/AzureAIVisionComponents/D
 import TagsResultComponent from './components/AzureAIVisionComponents/TagsResultComponent';
 import ImageAnalysisUrl from './components/ImageAnalysisComponents/ImageAnalysisUrl';
 import PeopleResultComponent from './components/AzureAIVisionComponents/PeopleResultComponent';
-
+import AboutMeComponent from './components/AboutComponents/AboutMeComponent';
+import AboutProjectComponent from './components/AboutComponents/AboutProjectComponent';
 // @mui icons
 import Icon from "@mui/material/Icon";
 
@@ -95,16 +96,16 @@ const routes = [
     name: "About the project",
     key: "aboutproject",
     icon: <Icon className="material-icons">biotech</Icon>,
-    route: "/",
-    component: ImageAnalysisUrl, 
+    route: "/aboutproject",
+    component: AboutProjectComponent, 
   },
   {
     type: "collapse",
     name: "About me",
     key: "aboutme",
     icon: <Icon className="material-icons">mood</Icon>,
-    route: "/",
-    component: ImageAnalysisUrl, 
+    route: "/aboutme",
+    component: AboutMeComponent, 
   }
 ];
 

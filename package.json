@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@azure/storage-blob": "^12.23.0",
     "@emotion/cache": "11.10.8",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",

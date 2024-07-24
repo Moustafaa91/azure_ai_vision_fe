@@ -34,16 +34,15 @@ import Sidenav from "examples/Sidenav";
 // Material Dashboard 2 React routes
 import routes from "routes";
 import ImageDisplay from './components/ShowDataComponents/ImageDisplay';
-
-import exampleResult from './Mock/result';
-
-
-
+import AboutMeComponent from './components/AboutComponents/AboutMeComponent'
+import AboutProjectComponent from 'components/AboutComponents/AboutProjectComponent';
 
 function App() {
 
   const [analysisResult, setAnalysisResult] = useState(null);
   const [displayImageUrl, setDisplayImageUrl] = useState('');
+  const [showImage, setShowImage] = useState(true);
+  const [about, setAbout] = useState('');
   const [currentBoundingBox, setCurrentBoundingBox] = useState(null);
   const [controller, dispatch] = useMaterialUIController();
   const {
@@ -57,6 +56,26 @@ function App() {
     darkMode,
   } = controller;
   const [onMouseEnter, setOnMouseEnter] = useState(false);
+  const location = useLocation();
+  const me = {
+    imageUrl: '/about_me.jpg',
+    name: 'Moustafa Attia',
+    description: 'A Software engineer .Net/C# with over 9 years of experience in software development using various technologies and frameworks in both backend and frontend such as Node JS, React, SQL Server, Git, Azure services and CI/CD.',
+    linkedinUrl: 'https://www.linkedin.com/in/mustafa1090',
+    githubUrl: 'https://github.com/Moustafaa91'
+  };
+
+  useEffect(() => {
+    const currentRoute = routes.find(route => route.route === location.pathname);
+    if (currentRoute) {
+      if (currentRoute.key === "aboutme") {
+        setShowImage(false);
+      } else {
+        setShowImage(true);
+      }
+    }
+  }, [location.pathname]);
+
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
     if (miniSidenav && !onMouseEnter) {
@@ -72,11 +91,6 @@ function App() {
       setOnMouseEnter(false);
     }
   };
-
-  /*
-  useEffect(() => {
-    setAnalysisResult(exampleResult);
-  }, []);*/
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -94,6 +108,9 @@ function App() {
               key={route.key}
             />
           );
+        }
+        if (route.key === "aboutme" || route.key === "aboutproject") {
+          return null;
         }
         else {
           return (
@@ -139,20 +156,21 @@ function App() {
           height="100%"
           bgColor="tranparent"
           shadow="sm"
-          
           position="absolute"
           left="30rem"
           zIndex={99}
-          color="dark"
-
-        >
-          <ImageDisplay imageUrl={displayImageUrl} boundingBox={currentBoundingBox} />
+          color="dark" >
+          {showImage ? (
+           <ImageDisplay imageUrl={displayImageUrl} boundingBox={currentBoundingBox} />
+          ) : (
+            <AboutProjectComponent />
+            
+          )}
           <MDBox display="flex"
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
             bgColor="transparent"
-            
             position="absolute"
             zIndex={-1}
             top="55%"
